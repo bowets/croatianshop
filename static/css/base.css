@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* -------------- SITE WIDE CSS ------------- */
+
+html {
+    height: 100%;
+}
+
+body {
+    height: calc(100vh - 200px);
+    background-color: #fff;
+    font-family: 'Roboto';
+}
+
+.header-container {
+    padding-top: 164px;
+}
+
+/* ---------------- HOME PAGE CSS -------------- */
+
+.carousel-image {
+    width: 50%;
+    margin: auto;
+}
+
+
+
+/* ---------------- MEDIA QUERIES -------------- */
+
