@@ -38,11 +38,15 @@
 
 <body>
     <header class="container-fluid fixed-top">
+
+        <!-- FREE DELIVERY THRESHOLD NOTIFICATION BAR -->
         <div class="row text-center">
             <div class="col bg-dark text-white text-uppercase">
                 <h4 class="my-1">Free delivery on orders over €{{ free_shipping_threshold }}</h4>
             </div>
         </div>
+
+        <!-- SITE TITLE -->
         <div class="row">
             <div class="col-12 my-auto py-1 py-lg-0 text-center">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -50,8 +54,9 @@
                 </a>
             </div>
         </div>
+
+        <!-- SEARCH / USER ACCOUNT / CHECKOUT BAG ROW -->
         <div id="topnav" class="row d-none d-lg-flex">
-            
             <div class="col-12 col-lg-4 col-xl-3 my-auto py-1 py-lg-0">
                 <form method="GET" action="">
                     <div class="input-group w-100">
@@ -109,6 +114,8 @@
                 </ul>
             </div>
         </div>
+
+        <!-- NAVIGATION BAR INCLUDING MAIN-NAVIGATION AND MOBILE-NAVIGATION -->
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light bg-light w-100 mx-1 my-0">
                 <div class="container-fluid">
