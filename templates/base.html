@@ -43,13 +43,16 @@
                 <h4 class="my-1">Free delivery on orders over €{{ free_shipping_threshold }}</h4>
             </div>
         </div>
-        <div id="topnav" class="row d-none d-lg-flex">
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-start">
+        <div class="row">
+            <div class="col-12 my-auto py-1 py-lg-0 text-center">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h2>Croatian Food Shop</h2>
                 </a>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+        </div>
+        <div id="topnav" class="row d-none d-lg-flex">
+            
+            <div class="col-12 col-lg-4 col-xl-3 my-auto py-1 py-lg-0">
                 <form method="GET" action="">
                     <div class="input-group w-100">
                         <input class="form-control border border-black rounded-0" type="text" name="q"
@@ -64,7 +67,8 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            <div class="col-12 col-lg-4 col-xl-6"></div>
+            <div class="col-12 col-lg-4 col-xl-3 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-end my-0">
                     <li class="list-inline-item dropdown">
                         <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -106,7 +110,7 @@
             </div>
         </div>
         <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light w-100 mx-1 my-0">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
                         aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">

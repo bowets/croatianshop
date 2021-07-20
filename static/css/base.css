@@ -7,13 +7,13 @@ html {
 }
 
 body {
-    height: calc(100vh - 200px);
+    height: calc(100vh - 250x);
     background-color: #fff;
     font-family: 'Roboto';
 }
 
 .header-container {
-    padding-top: 164px;
+    padding-top: 250px;
 }
 
 /* ---------------- HOME PAGE CSS -------------- */
@@ -27,3 +27,8 @@ body {
 
 /* ---------------- MEDIA QUERIES -------------- */
 
+@media (max-width: 992px) {
+    .header-container {
+        padding-top: 200px;
+    }
+}
