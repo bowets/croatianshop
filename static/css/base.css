@@ -38,6 +38,12 @@ body {
 }
 
 
+/* ---------------- PRODUCTS PAGES CSS -------------- */
+
+.image-container {
+    background-color: #fff !important;
+}
+
 
 /* ---------------- MEDIA QUERIES -------------- */
 
