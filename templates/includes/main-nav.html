@@ -5,10 +5,9 @@
                 Categories
             </a>
             <div class="dropdown-menu border-0 sub-heading-color" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
-                <a href="" class="dropdown-item">All Products</a>
+                {% for category in categories %}
+                <a href="{% url 'shop' %}?category={{category.id}}" class="dropdown-item">{{category.friendly_name}}</a>
+                {% endfor %}
             </div>
         </li>
 
