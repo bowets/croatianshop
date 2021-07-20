@@ -46,6 +46,13 @@
                                     <p class="lead mb-0 text-start font-weight-bold text-color">€ {{product.price}}</p>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{% url 'shop' %}?category={{product.category.id}}">
+                                        <p class="badge bg-danger text-wrap mb-0 text-start text-color">{{product.category.friendly_name}}</p>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

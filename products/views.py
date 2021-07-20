@@ -1,15 +1,21 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.db.models import Q
-from .models import Product
+from .models import Product, Category
 
 def all_products(request):
     """A view to return all products"""
 
     products = Product.objects.all()
     query = None
+    category = None
+
 
     if request.GET:
+        if 'category' in request.GET:
+            category = request.GET['category']
+            products = products.filter(category__id=category)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
