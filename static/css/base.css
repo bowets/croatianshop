@@ -44,6 +44,22 @@ body {
     background-color: #fff !important;
 }
 
+.categories-list {
+    background-color: #003459;
+}
+
+.categories-list li:hover {
+    background-color: #007ea7;
+}
+
+.categories-list li a,
+.categories-list li a:hover {
+    color: #fff;
+    text-decoration: none;
+
+
+}
+
 
 /* ---------------- MEDIA QUERIES -------------- */
 

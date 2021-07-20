@@ -20,7 +20,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="col product-container">
+        <div class="col-12 col-lg-3 d-none d-lg-block">
+            <div class="row w-100 mt-3">
+                <div class="col border-1 sub-heading-color mt-3">
+                    <h2 class="text-color">Categories</h2>
+                    <ul class="list-unstyled categories-list">
+                        <li><a href="{% url 'shop' %}">All Items</a></li>
+                        {% for category in categories %}
+                        <li><a href="{% url 'shop' %}?category={{category.id}}">{{category.friendly_name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-9 product-container">
             <div class="row mt-3"></div>
             <div class="row">
                 {% for product in products %}
@@ -50,7 +63,8 @@
                             <div class="row">
                                 <div class="col">
                                     <a href="{% url 'shop' %}?category={{product.category.id}}">
-                                        <p class="badge bg-danger text-wrap mb-0 text-start text-color">{{product.category.friendly_name}}</p>
+                                        <p class="badge bg-danger text-wrap mb-0 text-start text-color">
+                                            {{product.category.friendly_name}}</p>
                                     </a>
                                 </div>
                             </div>

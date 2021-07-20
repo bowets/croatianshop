@@ -9,6 +9,7 @@ def all_products(request):
     products = Product.objects.all()
     query = None
     category = None
+    categories = Category.objects.all()
 
 
     if request.GET:
@@ -28,6 +29,7 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query,
+        'categories': categories,        
     }
 
     return render(request, 'products/shop.html', context)
