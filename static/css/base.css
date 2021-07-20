@@ -8,12 +8,26 @@ html {
 
 body {
     height: calc(100vh - 250x);
-    background-color: #fff;
+    background-color: #00a8e8;
     font-family: 'Roboto';
 }
 
 .header-container {
     padding-top: 250px;
+}
+
+.text-color,
+.text-color li,
+.text-color li a {
+    color: #fff !important;
+}
+
+.main-heading-color {
+    background-color: #00171f;
+}
+
+.sub-heading-color {
+    background-color: #003459;
 }
 
 /* ---------------- HOME PAGE CSS -------------- */

@@ -13,8 +13,38 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col">
-            {{products}}
+        <div class="col text-center">
+            <h2 class="text-color">Shop</h2>
+            <hr class="w-50 mb-1 mx-auto text-color">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col product-container">
+            {% for product in products %}
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-1">
+                        {% if product.image %}
+                            <a href="">
+                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                            </a>
+                        {% else %}
+                            <a href="">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                            </a>
+                        {% endif %}
+                        <div class="card-body pb-0 sub-heading-color">
+                            <p class="mb-0 text-color">{{ product.name }}</p>
+                        </div>
+                        <div class="card-footer sub-heading-color pt-0 border-0 text-start">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="lead mb-0 text-start font-weight-bold text-color">{{product.price}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>
