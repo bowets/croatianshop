@@ -86,10 +86,20 @@ body {
     cursor: pointer;
 }
 
+/* ---------------- CHECKOUT PAGE CSS -------------- */
+
+.checkout-image {
+    width: 20vh;
+}
+
 /* ---------------- MEDIA QUERIES -------------- */
 
 @media (max-width: 992px) {
     .header-container {
         padding-top: 200px;
+    }
+
+    .checkout-image {
+        width: 10vh;
     }
 }
