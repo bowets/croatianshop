@@ -34,6 +34,12 @@ body {
     background-color: #007ea7;
 }
 
+/* ---------------- BOOTSTRAP OVERRIDE CSS -------------- */
+
+.border-bottom-site {
+    border-bottom: 1px solid #00171f;
+}
+
 /* ---------------- HOME PAGE CSS -------------- */
 
 .carousel-image {
