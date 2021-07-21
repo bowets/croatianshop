@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-6 text-end">
                     <select name="sort-selector" id="sort-dropdown" aria-label="sort-selector">
-                        <option value="null_null"  {% if not product_sort %}selected{% endif %}>Sort by...</option>
+                        <option value=""  {% if not product_sort %}selected{% endif %}>Sort by...</option>
                         <option value="price_asc" {% if product_sort == "price_asc" %}selected{% endif %} >By Price (low-high)</option>
                         <option value="price_desc" {% if product_sort == "-price_desc" %}selected{% endif %} >By Price (high-low)</option>
                         <option value="manufacturer_asc" {% if product_sort == "manufacturer_asc" %}selected{% endif %}>By Manufacturer (a-z)</option>
@@ -104,27 +104,40 @@
         </div>
     </div>
 </div>
+
+<div class="btn btn-danger btn-small" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
+{{block.super}}
+<script type="text/javascript">
+    $('#back-to-top').click(function(e) {
+        window.scrollTo(0,0)
+    })
+</script>
+
 <script type="text/javascript">
     $('#sort-dropdown').change(function() {
+        // sets the change to a variable
         let selector = $(this);
+        // gets the current URL
         let currentUrl = new URL(window.location);
-        console.log(currentUrl);
-        let originalQuery = currentUrl.href.split("?")[1]
+        // gets the value of the current selection        
         let selectedVal = selector.val();
-        console.log(originalQuery);
+        if (selectedVal != "") {
+            // splits the sorting value to get the sort order by
+            let sort = selectedVal.split("_")[0];
+            // splits the sorting value to get the direction
+            let direction = selectedVal.split("_")[1];
+            // sets the search parameters in the URL
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+            // Replaces the URL in the window with the new URL with search parameters
+            window.location.replace(currentUrl);
+        }
         
-        console.log(selectedVal);
-        let sort = selectedVal.split("_")[0];
-        let direction = selectedVal.split("_")[1];
-        currentUrl.searchParams.set("sort", sort);
-        currentUrl.searchParams.set("direction", direction);
-
-        console.log(currentUrl);
-
-        window.location.replace(currentUrl);
         
     })
 </script>

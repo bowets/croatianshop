@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.db.models import Q
+from django.db.models.functions import Lower
 from .models import Product, Category
 
 def all_products(request):
@@ -37,11 +38,18 @@ def all_products(request):
 
         if 'sort' in request.GET:
             sort = request.GET['sort']
+            sortkey = sort
+            if sortkey == "name":
+                sortkey == "lower_name"
+                products = products.annotate(lower_name=Lower('name'))
+            if sortkey == "manufacturer":
+                sortkey = "lower_manufacturer"
+                products = products.annotate(lower_manufacturer=Lower('manufacturer'))
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == "desc":
-                    sort = f"-{sort}"
-            products = products.order_by(sort)
+                    sortkey = f"-{sortkey}"
+            products = products.order_by(sortkey)
 
         product_sort = f"{sort}_{direction}"
 

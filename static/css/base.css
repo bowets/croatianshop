@@ -64,10 +64,15 @@ body {
 .categories-list a:hover {
     color: #fff;
     text-decoration: none;
-
-
 }
 
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    cursor: pointer;
+}
 
 /* ---------------- MEDIA QUERIES -------------- */
 
