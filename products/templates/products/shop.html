@@ -20,21 +20,49 @@
         </div>
     </div>
     <div class="row">
+
+        <!-- Categories side menu -->
         <div class="col-12 col-lg-3 d-none d-lg-block">
             <div class="row w-100 mt-3">
-                <div class="col border-1 sub-heading-color mt-3">
-                    <h2 class="text-color">Categories</h2>
+                <div class="col sub-heading-color mt-3 px-0">
+                    <h2 class="text-color px-3 pt-3">Categories</h2>
                     <ul class="list-unstyled categories-list">
-                        <li><a href="{% url 'shop' %}">All Items</a></li>
+                        <a href="{% url 'shop' %}"><li class="px-3 py-1">All Items</li></a>
                         {% for category in categories %}
-                        <li><a href="{% url 'shop' %}?category={{category.id}}">{{category.friendly_name}}</a></li>
+                        <a href="{% url 'shop' %}?category={{category.id}}"><li class="px-3 py-1">{{category.friendly_name}}</li></a>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
+
+        <!-- Product container displaying products -->
         <div class="col-12 col-lg-9 product-container">
-            <div class="row mt-3"></div>
+
+
+            <!-- Sub header between title and products -->
+            <div class="row mt-3">
+                <div class="col-6">
+                    {% if current_category %}
+                    <span>{{ current_category.friendly_name }}</span><span>{{ products_count }}</span>
+                    {% else %}
+                    <h4>All Products {{products_count}}</h4>
+                    {% endif %}
+                </div>
+                <div class="col-6 text-end">
+                    <select name="sort-selector" id="sort-dropdown" aria-label="sort-selector">
+                        <option value="null_null"  {% if not product_sort %}selected{% endif %}>Sort by...</option>
+                        <option value="price_asc" {% if product_sort == "price_asc" %}selected{% endif %} >By Price (low-high)</option>
+                        <option value="price_desc" {% if product_sort == "-price_desc" %}selected{% endif %} >By Price (high-low)</option>
+                        <option value="manufacturer_asc" {% if product_sort == "manufacturer_asc" %}selected{% endif %}>By Manufacturer (a-z)</option>
+                        <option value="manufacturer_desc" {% if product_sort == "-manufacturer_desc" %}selected{% endif %}>By Manufacturer (z-a)</option>
+                        <option value="name_asc" {% if product_sort == "name_asc" %}selected{% endif %}>A-Z</option>
+                        <option value="name_desc" {% if product_sort == "-name_desc" %}selected{% endif %}>Z-A</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products container -->
             <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
@@ -76,4 +104,28 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+<script type="text/javascript">
+    $('#sort-dropdown').change(function() {
+        let selector = $(this);
+        let currentUrl = new URL(window.location);
+        console.log(currentUrl);
+        let originalQuery = currentUrl.href.split("?")[1]
+        let selectedVal = selector.val();
+        console.log(originalQuery);
+        
+        console.log(selectedVal);
+        let sort = selectedVal.split("_")[0];
+        let direction = selectedVal.split("_")[1];
+        currentUrl.searchParams.set("sort", sort);
+        currentUrl.searchParams.set("direction", direction);
+
+        console.log(currentUrl);
+
+        window.location.replace(currentUrl);
+        
+    })
+</script>
 {% endblock %}

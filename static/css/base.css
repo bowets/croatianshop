@@ -30,6 +30,10 @@ body {
     background-color: #003459;
 }
 
+.sub-heading-color a:hover {
+    background-color: #007ea7;
+}
+
 /* ---------------- HOME PAGE CSS -------------- */
 
 .carousel-image {
@@ -40,6 +44,10 @@ body {
 
 /* ---------------- PRODUCTS PAGES CSS -------------- */
 
+.active-category {
+    background-color: #007ea7;
+}
+
 .image-container {
     background-color: #fff !important;
 }
@@ -48,12 +56,12 @@ body {
     background-color: #003459;
 }
 
-.categories-list li:hover {
+.categories-list a li:hover {
     background-color: #007ea7;
 }
 
-.categories-list li a,
-.categories-list li a:hover {
+.categories-list a,
+.categories-list a:hover {
     color: #fff;
     text-decoration: none;
 
