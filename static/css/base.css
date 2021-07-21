@@ -34,6 +34,12 @@ body {
     background-color: #007ea7;
 }
 
+.btn-outline-site {
+    border-width: 1px;
+    border-color: #00171f;
+    border-style: solid;
+}
+
 /* ---------------- BOOTSTRAP OVERRIDE CSS -------------- */
 
 .border-bottom-site {
