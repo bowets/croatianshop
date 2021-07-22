@@ -35,9 +35,10 @@ body {
 }
 
 .btn-outline-site {
-    border-width: 1px;
+    border-width: 2px;
     border-color: #00171f;
     border-style: solid;
+    background-color: #fff;
 }
 
 /* ---------------- BOOTSTRAP OVERRIDE CSS -------------- */
@@ -61,7 +62,14 @@ body {
 }
 
 .image-container {
-    background-color: #fff !important;
+    width: 30vh;
+    
+}
+
+.image-container img {
+    border-color: #00171f;
+    border-style: solid;
+    border-width: 2px;
 }
 
 .categories-list {
@@ -90,6 +98,12 @@ body {
 
 .checkout-image {
     width: 20vh;
+}
+
+.update-link,
+.remove-item {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 /* ---------------- MEDIA QUERIES -------------- */
