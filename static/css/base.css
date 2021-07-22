@@ -92,6 +92,12 @@ body {
     width: 20vh;
 }
 
+.update-link,
+.remove-item {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 /* ---------------- MEDIA QUERIES -------------- */
 
 @media (max-width: 992px) {
