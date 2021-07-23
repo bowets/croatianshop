@@ -43,8 +43,7 @@ def all_products(request):
                 sortkey == "lower_name"
                 products = products.annotate(lower_name=Lower('name'))
             if sortkey == "manufacturer":
-                sortkey = "lower_manufacturer"
-                products = products.annotate(lower_manufacturer=Lower('manufacturer'))
+                sortkey = "manufacturer__name"
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == "desc":
