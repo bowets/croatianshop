@@ -70,11 +70,15 @@ def all_products(request):
 
 def product_details(request, product_id):
     """A view to a page to display a specific products details"""
-
+    cart_product_quantity = None
     product = get_object_or_404(Product, pk=product_id)
-
+    cart = request.session.get('cart', {})
+    if product_id in list(cart.keys()):
+        cart_product_quantity = cart[product_id]
+    
     context = {
         'product': product,
+        'cart_product_quantity': cart_product_quantity,
     }
 
     return render(request, 'products/product_details.html', context)

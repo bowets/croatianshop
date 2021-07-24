@@ -60,6 +60,16 @@ body {
     height: 5px;
 }
 
+.toast-image {
+    width: 100%;
+}
+
+.toast-content-wrapper {
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 
 /* ---------------- BOOTSTRAP OVERRIDE CSS -------------- */
 
