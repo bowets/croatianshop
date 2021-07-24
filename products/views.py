@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.db.models import Q
+from django.contrib import messages
 from django.db.models.functions import Lower
 from .models import Product, Category
 
@@ -29,7 +30,7 @@ def all_products(request):
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter a search term.")
-                return redirect(reverse('products'))
+                return redirect(reverse('shop'))
 
             queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(manufacturer__name__icontains=query)
             products = products.filter(queries)
