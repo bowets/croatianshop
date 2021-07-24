@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib import messages
 from .forms import OrderForm
+from checkout.contexts import cart_contents
+from django.conf import settings
+
+import stripe
 
 
 
@@ -11,6 +15,9 @@ def purchase(request):
         messages.error(request, "There is nothing in your cart at the moment")
         return redirect(reverse('shop'))
 
+    current_cart = cart_contents(request)
+    total = current_cart['grand_total']
+    stripe_total = round(total * 100)
     order_form = OrderForm()
     template = 'purchase/purchase.html'
     context = {
