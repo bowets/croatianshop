@@ -26,7 +26,7 @@
             <p>Order Summary: ({{ product_count }})</p>
             <div class="row">
                 <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small">Item</p>
+                    <p class="mb-1 mt-0 small test-item">Item</p>
                 </div>
                 <div class="col-3 text-end">
                     <p class="mb-1 mt-0 small">Subtotal</p>
@@ -122,10 +122,8 @@
 {% endblock %}
 
 {% block postloadjs %}
-{{ block.super }}
-{{ stripe_public_key|json_script:"id_stripe_public_key" }}
-{{ client_secret|json_script:"id_client_secret" }}
-
-<script src="{% static 'purchase/js/stripe_element.js' %}"></script>
-
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'purchase/js/stripe_elements.js' %}"></script>
 {% endblock %}
