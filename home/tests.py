@@ -9,6 +9,4 @@ class TestURLs(TestCase):
 
     def test_home_url_is_resolved(self):
         url = reverse('home')
-        print(url)
-        print(resolve(url))
         self.assertEquals(resolve(url).func, index)
