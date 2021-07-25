@@ -2,7 +2,7 @@ from croatianshop.settings import STRIPE_CURRENCY
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.contrib import messages
-from .forms import OrderForm
+from purchase.forms import OrderForm
 from checkout.contexts import cart_contents
 from django.conf import settings
 from .models import OrderLineItem, Order
@@ -32,6 +32,7 @@ def purchase(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            print(order_form)
             order = order_form.save()
             for item_id, item_data in cart.items():
                 try:
@@ -51,7 +52,7 @@ def purchase(request):
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save_info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('purchase_success', args=[order.order_number]))
         else:
             messages.error(request, "There was an error with your form. \
                 Please double check your information.")
@@ -86,13 +87,13 @@ def purchase(request):
     return render(request, template, context)
 
         
-def purchase_success(request):
+def purchase_success(request, order_number):
     """If checkout successful inform user their purchase was successfull"""
 
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    message.success(request, f'Order successfully processed! \
-        Your order number is {order.number}. A confirmation \
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
             email will be sent to {order.email}.')
 
     if 'cart' in request.session:

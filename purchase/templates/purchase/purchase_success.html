@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'purchase/css/purchase.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="border-bottom-site">Thank you for your order</h2>
+            <hr>
+            <p>Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
+        </div>
+    </div>
+    <div class="row">
+       <div class="col-12 col-lg-7"></div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-7 text-end">
+            <a href="{% url 'home' %}" class="btn btn-dark my-2">
+                <span><i class="fas fa-home"></i></span>
+                <span>Home</span>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
