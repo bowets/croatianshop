@@ -1,10 +1,7 @@
-from os import truncate
-from unittest.result import failfast
 from products.models import Product
 from django.db import models
 import uuid
 
-from django.db.models.fields import EmailField
 from django.db.models import Sum
 from django.db import models
 from django.conf import settings
@@ -26,6 +23,8 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    original_cart = models.TextField(null=False, blank=False, default="none")
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default="none")
 
 
     def _generate_order_number(self):

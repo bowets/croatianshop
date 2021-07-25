@@ -43,7 +43,6 @@ def update_cart(request, item_id):
         cart[item_id] = quantity
         messages.success(request, f'Updated the quantity for {product.name} to {cart[item_id]}')
     else:
-        print(cart)
         cart.pop(item_id)
         messages.success(request, f'Removed {product.name}')
 

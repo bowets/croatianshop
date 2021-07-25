@@ -53,9 +53,6 @@ def all_products(request):
 
         product_sort = f"{sort}_{direction}"
 
-        print(product_sort)
-        
-
     context = {
         'products': products,
         'search_term': query,
