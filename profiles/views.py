@@ -1,9 +1,13 @@
+from django.contrib.auth import login
 from django.shortcuts import render, get_object_or_404
 from .models import UserProfile
 from .forms import UserProfileForm
 from django.contrib import messages
 from purchase.models import Order
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def profile(request):
     """Display the user's profile"""
     profile = get_object_or_404(UserProfile, user=request.user)
