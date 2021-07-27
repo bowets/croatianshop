@@ -38,9 +38,9 @@
                         <td>
                             <a href="{% url 'product_details' item.item_id %}">
                                 {% if item.product.image %}
-                                    <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                    <img class="img-fluid checkout-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                 {% else %}
-                                    <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                    <img class="img-fluid checkout-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
                                 {% endif %}
                             </a>
                         </td>
