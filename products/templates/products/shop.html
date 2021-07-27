@@ -64,6 +64,15 @@
 
             <!-- Products container -->
             <div class="row">
+                <!-- If there are no products the page will
+                    inform the user that there are no products
+                    and offer to take the user back to the shop. -->
+                {% if products_count == 0 %}
+                <div class="col">
+                    <h5>There are no products here</h5>
+                    <a href="{% url 'shop' %}" class="btn btn-danger">Return to Shop</a>
+                </div>
+                {% endif %}
                 {% for product in products %}
                 <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
                     <div class="card h-100 border-1">
@@ -96,6 +105,16 @@
                                     </a>
                                 </div>
                             </div>
+                            {% if request.user.is_superuser %}
+                            <div class="row">
+                                <div class="col">
+                                    <small>
+                                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                        <a href="{% url 'delete_product' product.id %}" class="text-danger">Delete</a>
+                                    </small>
+                                </div>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
