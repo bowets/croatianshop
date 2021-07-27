@@ -1,3 +1,4 @@
+from products.forms import ProductForm
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.db.models import Q
@@ -79,3 +80,15 @@ def product_details(request, product_id):
     }
 
     return render(request, 'products/product_details.html', context)
+
+
+def add_products(request):
+    """Add a product to the database"""
+
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
