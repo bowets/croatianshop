@@ -4,10 +4,11 @@ from products.models import Product
 def index(request):
     """Renders the home page template"""
 
-    products = Product.objects.all()
-
+    featured_products = Product.objects.filter(featured=True)
+    count = featured_products.count()
     context = {
-        'products': products,
+        'featured_products': featured_products,
+        'count': count,
     }
 
     return render(request, 'home/index.html', context)
