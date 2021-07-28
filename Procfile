@@ -1,0 +1,1 @@
+web: gunicorn croatian_food_store.wsgi:application
