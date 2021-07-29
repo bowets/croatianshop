@@ -27,9 +27,9 @@
                 <div class="col sub-heading-color mt-3 px-0">
                     <h2 class="text-color px-3 pt-3">Categories</h2>
                     <ul class="list-unstyled categories-list">
-                        <li class="px-3 py-1"><a href="{% url 'shop' %}"></a>All Items</a></li>
+                        <li class="nav-item-category"><a href="{% url 'shop' %}">All Items</a></li>
                         {% for category in categories %}
-                        <li class="px-3 py-1"><a href="{% url 'shop' %}?category={{category.id}}"></a>{{category.friendly_name}}</a></li>
+                        <li class="nav-item-category"><a href="{% url 'shop' %}?category={{category.id}}">{{category.friendly_name}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -156,8 +156,10 @@
             // Replaces the URL in the window with the new URL with search parameters
             window.location.replace(currentUrl);
         }
-        
-        
     })
+</script>
+
+<script>
+
 </script>
 {% endblock %}

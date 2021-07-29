@@ -69,6 +69,17 @@ body {
     font-size: 2rem;
 }
 
+.categories-list li a {
+    display: block;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+}
+
+.categories-list li {
+    padding-left: 0;
+}
 
 
 /* ---------------- TOASTS CSS -------------- */
