@@ -10,7 +10,3 @@ class TestCheckoutViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkout/checkout.html')
 
-    def test_add_to_cart_view(self):
-        product = Product(name='test_product')
-        response = self.client.get(f'/add/{product.id}')
-        self.assertEqual(response.status_code, 200)

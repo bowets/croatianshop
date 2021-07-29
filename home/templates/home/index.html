@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!-- Spacer between top of page and content.
+        Required due to navigation bar -->
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -10,15 +12,19 @@
 {% endblock %}
 
 
+
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col text-center">
-            <h1>Croatian Food Shop Home</h1>
-            <div id="carouselExampleIndicators" class="carousel slide border border-2" data-bs-ride="carousel">
+            <h1 class="text-color">Croatian Food Shop</h1>
+            <div class="description text-color my-3">
+                Welcome to the Croatian Food Shop. You can browse our entire inventory by going to the shop or check out our featured products below.
+            </div>
+            <div id="carouselindicators" class="carousel slide border border-2 bg-white" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                         {% for product in featured_products %}
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0}}"
+                        <button type="button" data-bs-target="#carouselindicators" data-bs-slide-to="{{forloop.counter0}}"
                         {% if forloop.counter0 == 0 %} class="active" {% endif %} aria-current="true" aria-label="Slide {{forloop.counter}}"></button>
                         {% endfor %}
                 </div>
@@ -28,31 +34,31 @@
                     <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
                         <div class="container px-0">
                             <div class="row">
-                                <div class="col-12 bg-info rounded-3">
-                                    <p>{{product.name}}</p>
+                                <div class="col-12 sub-heading-color rounded-3">
+                                    <p class="text-color text-uppercase my-2">{{product.name}}</p>
                                 </div>
                                 <!-- <div class="col-2"></div> -->
                                 <div class="col-12 col-lg-8 text-start">
                                     <img src="{{product.image.url}}" class="d-block carousel-image" alt="...">
                                 </div>
-                                <div class="col-12 col-lg-3">
-                                    <p class="mt-2 mt-xl-5">{{ product.name }}</p>
+                                <div class="col-12 col-lg-3 mb-4 mb-lg-0">
+                                    <p class="mt-2 mt-xl-5"><strong>{{ product.name }}</strong></p>
                                     <p class="text-lg-start">{{ product.description }}</p>
                                     <p>{{ product.manufacturer.friendly_name }}</p>
                                     <p>€ {{ product.price }}</p>
-                                    <a href="{% url 'product_details' product.id %}" class="btn btn-danger">Check this out</a>
+                                    <a href="{% url 'product_details' product.id %}" class="btn sub-heading-color text-color">Take a look</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselindicators"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselindicators"
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>

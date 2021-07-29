@@ -14,6 +14,7 @@
     {% block extra_meta %}
     {% endblock %}
 
+    <!-- CSS links to frameworks and stylesheets used across the site -->
     {% block corecss %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -21,11 +22,12 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" type="image/x-icon">
     {% endblock %}
 
+    <!-- Block for any extra CSS used for individual pages -->
     {% block extra_css %}
     {% endblock %}
 
+    <!-- Block for core JavaScript used throughout the site -->
     {% block corejs %}
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
@@ -35,6 +37,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
+    <!-- Block for any extra Javascript used for individual pages -->
     {% block extra_js %}
     {% endblock %}
 
@@ -42,128 +45,158 @@
 </head>
 
 <body>
-    <header class="container-fluid fixed-top">
+    <div class="wrapper">
+        <header class="container-fluid fixed-top">
 
-        <!-- FREE DELIVERY THRESHOLD NOTIFICATION BAR -->
-        <div class="row text-center">
-            <div class="col bg-dark text-white text-uppercase">
-                <h4 class="my-1">Free delivery on orders over €{{ free_delivery_threshold }}</h4>
-            </div>
-        </div>
-
-        <!-- SITE TITLE -->
-        <div class="row">
-            <div class="col-12 my-auto py-1 py-lg-0 text-center main-heading-color text-uppercase">
-                <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="text-color">Croatian Food Shop</h2>
-                </a>
-            </div>
-        </div>
-
-        <!-- SEARCH / USER ACCOUNT / CHECKOUT BAG ROW -->
-        <div id="topnav" class="row d-none d-lg-flex main-heading-color">
-            <div class="col-12 col-lg-4 col-xl-3 my-auto py-1 py-lg-0">
-                <form method="GET" action="{% url 'shop' %}">
-                    <div class="input-group w-100">
-                        <input class="form-control border border-black rounded-0" type="text" name="q"
-                            placeholder="Search our catalogue of products.">
-                        <div class="input-group-append">
-                            <button class="form-control btn bg-white border border-black rounded-0" type="submit">
-                                <span class="icon">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-12 col-lg-4 col-xl-6"></div>
-            <div class="col-12 col-lg-4 col-xl-3 my-auto py-1 py-lg-0">
-                <ul class="list-inline list-unstyled text-center text-lg-end my-0">
-                    <li class="list-inline-item dropdown">
-                        <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <div class="text-center">
-                                <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0">My Account</p>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                            {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                            <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                            {% endif %}
-                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                            {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                            {% endif %}
-                        </div>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-                            href="{% url 'view_cart' %}">
-                            <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                <p class="my-0">
-                                    {% if grand_total %}
-                                    ${{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                    $0.00
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- NAVIGATION BAR INCLUDING MAIN-NAVIGATION AND MOBILE-NAVIGATION -->
-        <div class="row sub-heading-color">
-            <nav class="navbar navbar-expand-lg navbar-light w-100 mx-1 my-0">
-                <div class="container-fluid">
-                    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    {% include 'includes/mobile-top-header.html' %}
-                    {% include 'includes/main-nav.html' %}
+            <!-- FREE DELIVERY THRESHOLD NOTIFICATION BAR -->
+            <div class="row text-center">
+                <div class="col bg-dark text-white text-uppercase">
+                    <h4 id="delivery-banner" class="my-1">Free delivery on orders over €{{ free_delivery_threshold }}</h4>
                 </div>
-            </nav>
-        </div>
+            </div>
 
-    </header>
+            <!-- SITE TITLE -->
+            <div class="row">
+                <div class="col-12 my-auto py-1 py-lg-0 text-center main-heading-color text-uppercase">
+                    <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                        <h2 class="text-color">Croatian Food Shop</h2>
+                    </a>
+                </div>
+            </div>
 
-    {% if messages %}
-    <div class="message-container">
-        {% for message in messages %}
-        {% with message.level as level %}
+            <!-- SEARCH / USER ACCOUNT / CHECKOUT BAG ROW -->
+            <div id="topnav" class="row d-none d-lg-flex main-heading-color">
+                <div class="col-12 col-lg-4 col-xl-3 my-auto py-1 py-lg-0">
+                    <form method="GET" action="{% url 'shop' %}">
+                        <div class="input-group w-100">
+                            <input class="form-control border border-black rounded-0" type="text" name="q"
+                                placeholder="Search our catalogue of products.">
+                            <div class="input-group-append">
+                                <button class="form-control btn bg-white border border-black rounded-0" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+                <div class="col-12 col-lg-4 col-xl-6"></div>
+                <div class="col-12 col-lg-4 col-xl-3 my-auto py-1 py-lg-0">
+                    <ul class="list-inline list-unstyled text-center text-lg-end my-0">
+                        <li class="list-inline-item dropdown">
+                            <a class="nav-link main-heading-link" href="#" id="user-options" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center">
+                                    <div><i class="fas fa-user fa-lg"></i></div>
+                                    <p class="my-0">My Account</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu border-0 sub-heading-color" aria-labelledby="user-options">
+                                {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                <a href="{% url 'add_product' %}" class="dropdown-item text-color">Product Management</a>
+                                {% endif %}
+                                <a href="{% url 'profile' %}" class="dropdown-item text-color">My Profile</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item text-color">Logout</a>
+                                {% else %}
+                                <a href="{% url 'account_signup' %}" class="dropdown-item text-color">Register</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item text-color">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                        <!-- Shopping Cart -->
+                        <li class="list-inline-item">
+                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link main-heading-link"
+                                href="{% url 'view_cart' %}">
+                                <div class="text-center">
+                                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                    <p class="my-0">
+                                        {% if grand_total %}
+                                        €{{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                        $0.00
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- NAVIGATION BAR INCLUDING MAIN-NAVIGATION AND MOBILE-NAVIGATION -->
+            <div class="row sub-heading-color">
+                <nav class="navbar navbar-expand-lg navbar-light w-100 mx-1 my-0">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler bg-white small-main-nav-link mx-0" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        {% include 'includes/mobile-top-header.html' %}
+                        {% include 'includes/main-nav.html' %}
+                    </div>
+                </nav>
+            </div>
+
+        </header>
+
+        {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+            {% with message.level as level %}
             {% if level == 40 %}
-                {% include 'includes/toasts/toast_error.html' %}
+            {% include 'includes/toasts/toast_error.html' %}
             {% elif level == 30 %}
-                {% include 'includes/toasts/toast_warning.html' %}
+            {% include 'includes/toasts/toast_warning.html' %}
             {% elif level == 25 %}
-                {% include 'includes/toasts/toast_success.html' %}
-            {% else  %}
-                {% include 'includes/toasts/toast_info.html' %}
+            {% include 'includes/toasts/toast_success.html' %}
+            {% else %}
+            {% include 'includes/toasts/toast_info.html' %}
             {% endif %}
-        {% endwith %}
-       
-        
-        {% endfor %}
+            {% endwith %}
+
+
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+        {% block page_header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+        <div class="push"></div>
     </div>
-    {% endif %}
-
-
-    {% block page_header %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-
+    <!-- Site footer across all pages -->
+    <footer class="main-heading-color">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-4 text-lg-start text-center">
+                    <p class="text-color mt-2 small">
+                        The Croatian Food Shop<br>
+                        Parnell Street, Dublin<br>
+                        Dublin 1, Ireland
+                    </p>
+                    <p class="text-color small">&copy; Croatian Food Shop 2021</p>
+                </div>
+                <div class="col-12 col-lg-4 text-center">
+                    <p class="text-color mt-2">
+                        Connect with us on social media
+                    </p>
+                    <span class="mx-3 text-color icon-size"><a class="main-heading-link" href="#"><i class="fab fa-facebook"></i></a></span>
+                    <span class="mx-3 text-color icon-size"><a class="main-heading-link" href="#"><i class="fab fa-instagram"></i></a></span>
+                    <span class="mx-3 text-color icon-size"><a class="main-heading-link" href="#"><i class="fab fa-twitter"></i></a></span>
+                </div>
+                <div class="col-12 col-lg-4 text-center text-lg-end">
+                    <p class="text-color mt-2"><a class="main-heading-link" href="{% url 'about' %}">About</a> | <a class="main-heading-link" href="{% url 'delivery_return' %}">Delivery & Return</a> | <a class="main-heading-link" href="{% url 'faq' %}">FAQ</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
     {% block postloadjs %}
     <script type="text/javascript">
         let myToast = document.getElementById("toastShow");

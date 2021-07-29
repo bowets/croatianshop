@@ -4,12 +4,27 @@
 
 html {
     height: 100%;
+    margin: 0;
 }
 
 body {
+    height: 100%;
+    margin: 0;
     /* height: calc(100vh - 250x); */
     background-color: #00a8e8;
     font-family: 'Roboto';
+}
+
+/*--- CODE TAKEN FROM CSS-TRICKS.COM --- */
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -70px;
+}
+
+.footer,
+.push {
+    height: 70px;
+    margin-top:20px
 }
 
 .header-container {
@@ -26,6 +41,15 @@ body {
     background-color: #00171f;
 }
 
+.main-heading-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.main-heading-link:hover {
+    color: #007ea7;
+}
+
 .sub-heading-color {
     background-color: #003459;
 }
@@ -40,6 +64,12 @@ body {
     border-style: solid;
     background-color: #fff;
 }
+
+.icon-size {
+    font-size: 2rem;
+}
+
+
 
 /* ---------------- TOASTS CSS -------------- */
 
@@ -225,10 +255,38 @@ input[name='q']::placeholder {
 
 @media (max-width: 992px) {
     .header-container {
-        padding-top: 200px;
+        padding-top: 150px;
     }
 
     .checkout-image {
         width: 10vh;
+    }
+
+    .small-main-nav-link {
+        font-size: .7rem;
+        padding: .10rem;
+    }
+
+    .nav-link i.fa-lg {
+        font-size: 1rem;
+    }
+
+    .navbar-toggler {
+        padding: .4rem .4rem;
+        font-size: .7rem;
+    }
+
+    #delivery-banner {
+        font-size: 1rem;
+    }
+
+    .text-logo {
+        font-size: .9rem;
+    }
+
+    .message-container {
+        top: 150px;
+        right: 0;
+        width: 310px;
     }
 }

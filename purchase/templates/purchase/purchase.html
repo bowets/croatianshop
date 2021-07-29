@@ -18,18 +18,18 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 class="border-bottom-site">Complete your order</h2>
+            <h2 class="border-bottom-site text-color">Complete your order</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-lg-6 order-lg-last mb-5">
-            <p>Order Summary: ({{ product_count }})</p>
+        <div class="col-12 col-lg-6 order-lg-last mb-5 sub-heading-color ">
+            <p class="text-color mt-2">Order Summary: ({{ product_count }})</p>
             <div class="row">
                 <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small test-item">Item</p>
+                    <p class="mb-1 mt-0 small test-item text-color">Item</p>
                 </div>
                 <div class="col-3 text-end">
-                    <p class="mb-1 mt-0 small">Subtotal</p>
+                    <p class="mb-1 mt-0 small text-color">Subtotal</p>
                 </div>
                 {% for item in cart_items %}
                     <div class="row">
@@ -43,40 +43,40 @@
                             </a>
                         </div>
                         <div class="col-7">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small">Quantity: {{ item.quantity }}</p>
+                            <p class="my-0 text-color"><strong>{{ item.product.name }}</strong></p>
+                            <p class="my-0 small text-color">Quantity: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-end">
-                            <p class="my-0 small">€ {{ item.subtotal }}</p>
+                            <p class="my-0 small text-color">€ {{ item.subtotal }}</p>
                         </div>
                     </div>
                 {% endfor %}
                 <hr class="my-0">
                 <div class="row text-end">
                     <div class="col-7 offset-2">
-                        <p class="my-0">Order Total:</p>
-                        <p class="my-0">Delivery:</p>
-                        <p class="my-0">Grand Total:</p>
+                        <p class="my-0 text-color">Order Total:</p>
+                        <p class="my-0 text-color">Delivery:</p>
+                        <p class="my-0 text-color">Grand Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0">{{ total | floatformat:2 }}</p>
-                        <p class="my-0">{{ delivery | floatformat:2 }}</p>
-                        <p class="my-0"><strong>{{ grand_total | floatformat:2 }}</strong></p>
+                        <p class="my-0 text-color">{{ total | floatformat:2 }}</p>
+                        <p class="my-0 text-color">{{ delivery | floatformat:2 }}</p>
+                        <p class="my-0 text-color"><strong>{{ grand_total | floatformat:2 }}</strong></p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-12 col-lg-6">
-            <p>Please Fill out the form below to complete your order.</p>
+            <p class="text-color">Please Fill out the form below to complete your order.</p>
             <form action="{% url 'purchase' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="px-3 mb-5">
-                    <legend class="fieldset-label small px-2 w-auto">Details</legend>
+                    <legend class="fieldset-label small px-2 w-auto text-color">Details</legend>
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field  }}
                 </fieldset>
                 <fieldset class="px-3 mb-5">
-                    <legend class="fieldset-label small px-2 w-auto">Delivery Info:</legend>
+                    <legend class="fieldset-label small px-2 w-auto text-color">Delivery Info:</legend>
                     {{ order_form.phone_number | as_crispy_field }}
                     {{ order_form.street_address1 | as_crispy_field }}
                     {{ order_form.street_address2 | as_crispy_field }}
@@ -86,12 +86,12 @@
                     {{ order_form.country | as_crispy_field }}
                     <div class="form-check form-check-inline float-right me-0">
                         {% if user.is_authenticated %}
-                        <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                        <label class="form-check-label text-color" for="id-save-info">Save this delivery information to my profile</label>
                         <input class="form-check-input ml-2 me-0" type="checkbox" id="id-save-info" name="save-info" checked>
                         {% else %}
-                        <label class="form-check-label" for="id-save-info">
-                            <a href="{% url 'account_signup' %}" class="text-info">Create an account</a> or
-                            <a href="{% url 'account_login' %}" class="text-info">login</a> to save this information.
+                        <label class="form-check-label text-color" for="id-save-info">
+                            <a href="{% url 'account_signup' %}" class="main-heading-link">Create an account</a> or
+                            <a href="{% url 'account_login' %}" class="main-heading-link">login</a> to save this information.
                         </label>
                         {% endif %}
                     </div>
@@ -107,13 +107,15 @@
                         <i class="fas fa-chevron-left"></i>
                         <span class="font-weight-bold">Adjust Cart</span>
                     </a>
-                    <button id="submit-button" class="btn btn-dark">
-                        <span>Complete Order</span>
-                        <i class="fas fa-lock"></i>
+                    <button id="submit-button" class="btn sub-heading-color">
+                        <span class="text-color">Complete Order</span>
+                        <i class="fas fa-lock text-color"></i>
                     </button>
-                    <p class="small text-danger my-0">
+                    <p class="small  my-0 mt-3">
+                        <span class="bg-warning text-dark p-2">
                         <i class="fas fa-exclamation-circle"></i>
                         <span>Your card will be charged <strong>€ {{ grand_total|floatformat:2 }}</strong></span>
+                    </span>
                     </p>
                 </div>
             </form>

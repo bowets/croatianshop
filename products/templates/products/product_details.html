@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-            <div class="image-container mt-5 mb-2">
+            <div class="image-container mt-1 mt-lg-5 mb-2">
                 {% if product.image %}
                 <a href="{{ product.image.url }}" target="_blank">
                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -51,7 +51,7 @@
                             <!-- Quantity selector -->
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <button class="decrement-qty btn" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                    <button class="decrement-qty btn sub-heading-color text-color" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
                                         <span>
                                             <i class="fas fa-minus"></i>
                                         </span>
@@ -60,7 +60,7 @@
                                 <input type="number" class="form-control qty-input" name="quantity" value="1" min="1"
                                     max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                                 <div class="input-group-append">
-                                    <button class="increment-qty btn" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                    <button class="increment-qty btn sub-heading-color text-color" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
                                         <span>
                                             <i class="fas fa-plus"></i>
                                         </span>
@@ -77,7 +77,7 @@
                             </span>
                             <span class="text-uppercase">Keep Shopping</span>
                         </a>
-                        <input type="submit" class="btn btn-site text-uppercase mt-5" value="Add to Cart">
+                        <input type="submit" class="btn btn-site text-uppercase mt-5 sub-heading-color text-color" value="Add to Cart">
                     </div>
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 </div>
