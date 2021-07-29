@@ -20,7 +20,45 @@
     <div class="row">
         <div class="col">
             {% if cart_items %}
-            <div class="table-responsive">
+            <div class="d-block d-md-none">
+                <div class="row">
+                    <div class="col">
+                        {% include "checkout/cart-total.html" %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {% include "checkout/purchase-buttons.html" %}
+                        <p class="text-color mb-5">A summary of your bag contents is below:</p>
+                    </div>
+                </div>
+                {% for item in cart_items %}
+                    <div class="row">
+                        <div class="col-12 col-sm-6 mb-2 text-center">
+                            {% include "checkout/product-image.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6 mb-2 text-center text-sm-start">
+                            {% include "checkout/product-info.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6 order-sm-last text-center text-sm-start">
+                            <p class="my-0 text-color">Price Each: € {{ item.product.price }}</p>
+                            <p class="my-0 text-color">Subtotal: € {{ item.subtotal }}</p>
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            {% include "checkout/quantity-form.html" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="btn btn-danger btn-small" id="back-to-top">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+            </div>
+            <div class="table-responsive d-none d-md-block">
                 <table class="table table-sm table-borderless">
                     <thead>
                         <tr>
@@ -37,52 +75,17 @@
                     <tr>
                         <td>
                             <a href="{% url 'product_details' item.item_id %}">
-                                {% if item.product.image %}
-                                    <img class="img-fluid checkout-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                                {% else %}
-                                    <img class="img-fluid checkout-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
-                                {% endif %}
+                                {% include "checkout/product-image.html" %}
                             </a>
                         </td>
                         <td>
-                            <p class="my-0 text-color"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 text-color">SKU: {{ item.product.sku }}</p>
+                            {% include "checkout/product-info.html" %}
                         </td>
                         <td>
-                            <p class="my-0">€ {{ item.product.price }}</p>
+                            <p class="my-0 text-color">€ {{ item.product.price }}</p>
                         </td>
                         <td>
-                            <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
-                                {% csrf_token %}
-                                <div class="form-group">
-
-                                    <!-- Quantity selector -->
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <button class="decrement-qty btn btn-sm" data-item_id="{{ item.item_id }}"
-                                                id="decrement-qty_{{ item.item_id }}">
-                                                <span>
-                                                    <i class="fas fa-minus fa-sm"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <input type="number" class="form-control form-control-sm qty-input"
-                                            name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                            data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                        <div class="input-group-append">
-                                            <button class="increment-qty btn btn-sm" data-item_id="{{ item.item_id }}"
-                                                id="increment-qty_{{ item.item_id }}">
-                                                <span>
-                                                    <i class="fas fa-plus fa-sm"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                                <a class="update-link btn btn-sm sub-heading-color text-color"><small>Update</small></a>
-                                <a class="remove-item btn btn-sm btn-danger float-end"
-                                    id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                            {% include "checkout/quantity-form.html" %}
                         </td>
                         <td>
                             <p class="my-0 text-color">€ {{ item.subtotal }}</p>
@@ -92,32 +95,12 @@
                     {% endfor %}
                     <tr>
                         <td colspan="5" class="pt-5 text-end">
-                            <h6 class="text-color"><strong>Cart Total: € {{ total|floatformat:2 }}</strong></h6>
-                            <h6 class="text-color">Delivery: € {{ delivery|floatformat:2 }}</h6>
-                            <h4 class="mt-4 text-color"><strong>Grand Total: € {{ grand_total|floatformat:2 }}</strong></h4>
-                            {% if free_delivery_delta > 0 %}
-                            <p class="mb-1">
-                                <span class="bg-warning p-1">
-                                Go on, get a few more tasty treats! You only need to spend <strong>€ {{ free_delivery_delta|floatformat:2 }}</strong> more to get free delivery!
-                            </span>
-                            </p>
-                            {% endif %}
+                           {% include "checkout/cart-total.html" %}
                         </td>
                     </tr>
                     <tr>
                         <td colspan="5" class="text-end">
-                            <a href="{% url 'shop' %}" class="btn btn-danger btn-lg">
-                                <span>
-                                    <i class="fas fa-chevron-left"></i>
-                                </span>
-                                <span class="text-uppercase">Keep Shopping</span>
-                            </a>
-                            <a href="{% url 'purchase' %}" class="btn btn-lg btn-dark">
-                                <span class="text-uppercase">Secure Checkout</span>
-                                <span>
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </a>
+                            {% include "checkout/purchase-buttons.html" %}
                         </td>
                     </tr>
                 </table>
@@ -158,6 +141,12 @@
             .done(function () {
                 location.reload();
             })
+    })
+</script>
+
+<script type="text/javascript">
+    $('#back-to-top').click(function(e) {
+        window.scrollTo(0,0)
     })
 </script>
 

@@ -281,12 +281,25 @@ input[name='q']::placeholder {
     }
 
     .text-logo {
-        font-size: .9rem;
+        font-size: 1rem;
     }
 
     .message-container {
         top: 150px;
         right: 0;
         width: 310px;
+    }
+
+    .btn-lg {
+        font-size: .75rem;
+        padding: .375rem .375rem;
+    }
+
+    .text-small {
+        font-size: .75rem;
+    }
+
+    .checkout-image {
+        width: 80%;
     }
 }
