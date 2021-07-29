@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-from django.http.response import HttpResponseServerError
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
@@ -37,7 +36,7 @@ class StripeWH_Handler:
         )
 
     def handle_event(self, event):
-        """Handle a generic / unknonw / unexpected webhook event"""
+        """Handle a generic / unknown / unexpected webhook event"""
 
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
