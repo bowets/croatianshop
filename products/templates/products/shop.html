@@ -27,9 +27,9 @@
                 <div class="col sub-heading-color mt-3 px-0">
                     <h2 class="text-color px-3 pt-3">Categories</h2>
                     <ul class="list-unstyled categories-list">
-                        <a href="{% url 'shop' %}"><li class="px-3 py-1">All Items</li></a>
+                        <li class="px-3 py-1"><a href="{% url 'shop' %}"></a>All Items</a></li>
                         {% for category in categories %}
-                        <a href="{% url 'shop' %}?category={{category.id}}"><li class="px-3 py-1">{{category.friendly_name}}</li></a>
+                        <li class="px-3 py-1"><a href="{% url 'shop' %}?category={{category.id}}"></a>{{category.friendly_name}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -131,13 +131,13 @@
 
 {% block postloadjs %}
 {{block.super}}
-<script type="text/javascript">
+<script>
     $('#back-to-top').click(function(e) {
         window.scrollTo(0,0)
     })
 </script>
 
-<script type="text/javascript">
+<script>
     $('#sort-dropdown').change(function() {
         // sets the change to a variable
         let selector = $(this);
