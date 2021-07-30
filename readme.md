@@ -1,8 +1,16 @@
 # The Croatian Food Shop
 
 Croatians are one of the most displaced people on the planet. Along with the Irish and the Lebanese, Croatians are one of the few people groups where the number of people living outside the country actually outnumber the ones living in the country. Even though Croatians live outside of Croatia, they still like to be reminded of home and what better way to remind someone of their home than through food. Food is the one thing that unites everyone and many friendships, business deals and romances have formed through sharing food. This project aims to reunite expat Croatians with their homeland through food. 
+
+## Why this project
+
+I created this project as part of of the Full Stack Web development course at Code Institute. The scope of the project was to create a full feature e-commerce website incorporating Python, Django and a relational database as the backend and HTML, CSS & Javascript as the front end. There were more frameworks and libraries used in this project which will be discussed further in the readme. I chose to create a Croatian Food Shop as I have, for a long time, wanted to buy Croatian food in Ireland. However, only recently has the number of Croatian people in Ireland increased to the number to make a shop like this viable. 
 # UX
+
+On the Croatian Food Shop anyone is welcome and able to buy products which are on offer. 
 ## Project Goals
+
+The goal of this project is to successfully demonstrate the skills and competence in developing a full stack web application.
 
 ### Target Audience
 
@@ -16,6 +24,7 @@ Croatians are one of the most displaced people on the planet. Along with the Iri
 ### Visitor / User Goals
 
 - Purchase products from their home country in a safe and secure way
+- Find information about Croatian food products
 
 ### Business Goals
 
@@ -62,9 +71,25 @@ Casual users have an option to register for an account. The benefit of registeri
 - As a site owner or admin, I want to be able to add products to the database so that I can update inventory. 
 - As a site owner or admin, I want to be able to delete products from the database so that I can update the inventory. 
 - As a site owner or admin, I want to be able to edit current products so that I can update product information if I need to. 
- 
+
 ## Design
+
+### Frameworks
+
+- [Bootstrap](https://getbootstrap.com/) 5 is the front end web framework chosen for this project. The framework offers ease of use and the ability to quickly develop a modern front end design. It was used to create the navigation and structure of the front end. 
+- [jQuery](https://jquery.com/) is used to support the functioning of the payment system Stripe as well as add additional functionality to website elements such as links and buttons. 
+
+### Color Scheme
+
+The color palette was taken from the website [Coolors.co](https://coolors.co/). It was chosen for it's gradient of blue tones which represent the Croatian sky, coast and deep sea. As the target audience of the site are Croatian expats, the colors chosen should represent those which would resonate with the target audience.   
+
+![Croatian Food Shop Color Palette](/readme_data/colorpalette/croatian-food-shop-color-palette.png)
+
 ## Wireframes
+
+[Balsamiq Wireframe Tools](https://balsamiq.com/) was used to create the wireframes for this project. 
+
+- [Home Page](/readme_data/wireframes/Home_Page.png)
 # Features
 ## Existing Features
 ## Features Left to Implement
