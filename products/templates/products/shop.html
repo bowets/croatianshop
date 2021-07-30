@@ -42,14 +42,14 @@
 
             <!-- Sub header between title and products -->
             <div class="row mt-3">
-                <div class="col-6">
+                <div class="col-12 col-sm-6">
                     {% if current_category %}
                     <h4 class="text-color text-logo">{{ products_count }} products in {{ current_category.friendly_name }}</h4>
                     {% else %}
                     <h4 class="text-color text-logo">{{products_count}} products in All Products</h4>
                     {% endif %}
                 </div>
-                <div class="col-6 text-end">
+                <div class="col-12 col-sm-6 text-sm-end">
                     <select name="sort-selector" id="sort-dropdown" aria-label="sort-selector">
                         <option value=""  {% if not product_sort %}selected{% endif %}>Sort by...</option>
                         <option value="price_asc" {% if product_sort == "price_asc" %}selected{% endif %} >By Price (low-high)</option>
