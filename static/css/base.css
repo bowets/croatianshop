@@ -262,6 +262,26 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+/* ---------------- ABOUT PAGE CSS -------------- */
+
+.about-image {
+    width: 80%;
+    height: auto;
+}
+
+
+/* ---------------- FAQ PAGE CSS -------------- */
+
+.accordion-button {
+    background-color: #003459 !important;
+    color: #fff;
+}
+
+.accordion-button:focus {
+    background-color: #003459 !important;
+    color: #fff !important;
+}
+
 /* ---------------- MEDIA QUERIES -------------- */
 
 @media (max-width: 992px) {
