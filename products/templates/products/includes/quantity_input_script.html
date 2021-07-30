@@ -17,7 +17,7 @@
     $('.qty_input').change(function() {
         let itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
-    }) 
+    }); 
 
 
     $('.increment-qty').click(function(e) {
@@ -27,7 +27,7 @@
         $(closestInput).val(currentValue + 1);
         let itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
-    })
+    });
 
     $('.decrement-qty').click(function(e) {
         e.preventDefault();
@@ -36,5 +36,5 @@
         $(closestInput).val(currentValue - 1);
         let itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
-    })
+    });
 </script>

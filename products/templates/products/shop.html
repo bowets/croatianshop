@@ -132,9 +132,9 @@
 {% block postloadjs %}
 {{block.super}}
 <script>
-    $('#back-to-top').click(function(e) {
-        window.scrollTo(0,0)
-    })
+   $('#back-to-top').click(function(e) {
+        window.scrollTo(0,0);
+    });
 </script>
 
 <script>
@@ -156,10 +156,6 @@
             // Replaces the URL in the window with the new URL with search parameters
             window.location.replace(currentUrl);
         }
-    })
-</script>
-
-<script>
-
+    });
 </script>
 {% endblock %}
