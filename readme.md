@@ -90,6 +90,13 @@ The color palette was taken from the website [Coolors.co](https://coolors.co/). 
 [Balsamiq Wireframe Tools](https://balsamiq.com/) was used to create the wireframes for this project. 
 
 - [Home Page](/readme_data/wireframes/Home_Page_resize.png)
+- [Products Page](/readme_data/wireframes/Products_resize.png)
+- [Products Details](/readme_data/wireframes/Product_details_resize.png)
+- [Purchase View](/readme_data/wireframes/Purchase_view_resize.png)
+- [Payment Page](/readme_data/wireframes/CC_Form_View_resize.png)
+- [Order Information](/readme_data/wireframes/Order_info_resize.png)
+
+
 # Features
 ## Existing Features
 ## Features Left to Implement
