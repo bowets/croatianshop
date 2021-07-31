@@ -415,7 +415,64 @@ os.environ.setdefault('DEVELOPMENT', 'True')
 
 ## Heroku Deployment
 
+To deploy to Heroku you will need to clone the project as described in the local deployment section above. 
+Once the project is cloned and ready on your local machine:
 
+1. Create a new repository in Github and push this project into the new repository.
+2. Log in to [Heroku](https://www.heroku.com/home) if you have an account or if you do not have an account, create a new account.
+3. when in the Heroku dashboard, click on the "New" button and then select "Create new app"
+4. On the next screen enter an app name (must be unique) and select the region closest to you. 
+5. When in the app dashboard click on "Resources" and search for "Heroku Postgres". This will be your database for the project. 
+6. Go to the settings tab and click on "Reveal config vars". You will see a config variable `DATABASE_URL`. Copy this URL and go back to the project in your IDE.
+7. Install dj-database-url `pip install dj-database-url`
+8. Open settings.py in your project and find `DATABASES`. 
+8. Comment out the original database code and copy the below in. 
+ ```
+DATABASES = {
+        'default': dj_database_url.parse(<DATABASE_URL that you copied from your heroku>)
+    }
+```
+9. Now run migrations
+- `py manage.py makemigrations`
+- `py manage.py migrate`
+- `py manage.py loaddata db.json`
+- This will load the data into the postgres database in heroku
+10. Delete the database codes from your settings.py and replace with:
+```
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.getenv('DATABASE_URL', ''))
+    }
+else:
+    # Database
+    # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+```
+11. Go back to Heroku and navigate to settings and select "Reveal Config Vars. Here you will enter the configuration keys and values from your env.py file. They should look similar to this:
+```
+DATABASE_URL: <your database URL>
+SECRET_KEY: <your secret key>
+STRIPE_PUBLIC_KEY: <your secret key>
+STRIPE_SECRET_KEY: <your secret key>
+STRIPE_WH_SECRET: <your secret key>
+SECRET_KEY: <your secret key>
+AWS_ACCESS_KEY_ID: <your secret key>
+AWS_SECRET_ACCESS_KEY: <your secret key>
+EMAIL_HOST_PASS: <your email password from Google>
+EMAIL_HOST_USER: <your email address>
+USE_AWS: True
+```
+11. In the deploy section, click on "Connect to GitHub".
+9. Select your github user account and search for the repository that you want to deploy.
+10. If you want, you can enable Automatic Deployment. This will build your application each time you push any changes to GitHub.
+11. Now go back to the "Deploy" tab and click on "Deploy Branch"
+12. The website should be deployed on ```https://[your_app_name].herokuapp.com/```
 
 # Credits
 ## Code
@@ -424,8 +481,8 @@ os.environ.setdefault('DEVELOPMENT', 'True')
 - StackOverflow provided solutions to debugging URLs and view bugs
 ## Content and Media
 
-- [CleanPNG](https://www.cleanpng.com/png-croatia-vector-map-rijeka-2316421/download-png.html) - To download the favicon
-- [The Noun Project](https://thenounproject.com/term/croatia-map/350294/) To download a map of Croatia for the about page
+- [CleanPNG](https://www.cleanpng.com/png-croatia-vector-map-rijeka-2316421/download-png.html) - Favicon
+- [The Noun Project](https://thenounproject.com/term/croatia-map/350294/) Map of Croatia for the about page
 
 ## Acknowledgements
 
