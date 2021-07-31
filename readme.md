@@ -457,6 +457,7 @@ To run the tests type `py manage.py test` in the command prompt.
     - Changing the details and clicking "Update Information" changes the user information and saves it to the form
     - Users previous orders display correctly in the column on the right. 
     - Clicking on a previous order opens it up correctly and the link to go back to the profile resolves back to the user profile
+    - **Issue** - There seems to be an issue with the footer not sticking to the bottom of the page on this page, but due to time constraints I was not able to fix it in time
 
 - SuperUsers 
     - Logged in supper users can see and additional option in the My Account dropdown to manage products
