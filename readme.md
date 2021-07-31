@@ -370,6 +370,17 @@ lineitem\_total|DecimalField|max\_digits=6, decimal\_places=2, null=False, bl
 - [PEP8 Online](http://pep8online.com/) - Testing that all python code is valid
 
 # Testing
+## Automatic Testing
+
+[Travis CI](https://travis-ci.com/) was used as a continuous integration solution to ensure code is always tested before it is deployed. The automatic tests were written for urls, views, forms and models in this site and are stored in test_views.py, test_urls.py, test_forms.py & test_models.py throughout the site. There are 26 tests in total and they all passed. Due to some of the tests getting quite complicated and due to time pressure, the rest of the functionality was tested manually. 
+
+To test I used the built in django TestCase and ran the tests on my local terminal before pushing to github and through Travis. 
+To run the tests type `py manage.py test` in the command prompt.
+
+## Manual Testing
+
+
+
 # Deployment
 ## Local Deployment
 

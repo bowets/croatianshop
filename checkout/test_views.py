@@ -1,7 +1,4 @@
-from django.http import response
-from django.test import TestCase, client
-from products.models import Product
-from django.contrib.auth.models import User
+from django.test import TestCase
 
 
 class TestCheckoutViews(TestCase):
