@@ -96,7 +96,7 @@ The color palette was taken from the website [Coolors.co](https://coolors.co/). 
 - [Payment Page](/readme_data/wireframes/CC_Form_View_resize.png)
 - [Order Information](/readme_data/wireframes/Order_info_resize.png)
 
-
+**Note:** The wireframes are a basic representation of the actual look of the site. 
 # Features
 ## Existing Features
 ## Features Left to Implement
@@ -108,6 +108,30 @@ The color palette was taken from the website [Coolors.co](https://coolors.co/). 
 ## Libraries and Frameworks
 ## Tools
 ## Databases
+
+### Products
+
+#### Categories
+
+**Database Key**|**Field Type**|**Validation**
+:-----:|:-----:|:-----:
+name|CharField|max\_length=254, null=False, blank=False
+friendly\_name|CharField|max\_length=254, null=True, blank=True
+
+#### Order
+
+**Database Key**|**Field Type**|**Validation**
+:-----:|:-----:|:-----:
+category|Foreign Key "Category"|null=True, blank=True, on\_delete=models.SET\_NULL
+sku|CharField|max\_length=254, null=True, blank=True
+name|CharField|max\_length=254
+description|TextField| 
+manufacturer|Foreign Key "Manufacturer"|null=True, blank=True, on\_delete=models.SET\_NULL
+price|DecimalField|max\_digits=6, decimal\_places=2, null=False, blank=False
+image\_url|URLField|max\_length=1024, null=True, blank=True
+image|ImageField|null=True, blank=True
+featured|BooleanField|default=False
+
 # Testing
 # Deployment
 ## Local Deployment
