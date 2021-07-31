@@ -141,11 +141,65 @@ Users can therefore search by name, description and manufacturer.
 - **Site title** - Users can see the site title on all pages and by clicking the title can go back to the home page. The home page is not the main focus of the site and therefore no need to create a special link for it.
 
 - **Site footer** - The site footer is available throughout the site and it clearly displays the shop address, social media links (social media links do not work as this site is for educational purposes only) and links to the static pages. 
-## Home Page
+### Home Page
 
 ![Home Page](/readme_data/site_pages/home_resize.png)
 
-The home page has a page title
+The home page displays a carousel of featured apps. The site administrator can add or remove featured status for any product when editing or creating a new product. This can be done by ticking a "Featured" checkbox on the product form. All featured products are added to the carousel. 
+
+The carousel items contain a product image, product name, description, manufacturer, price and button which links to the product details page. From there the user can add the product to their cart. 
+
+### About US
+
+![About Us page](/readme_data/site_pages/about_us_resize.png)
+
+The about us page is made up of two columns. The left column contains information about the company. The right column contains a map of Croatia. In mobile view, the columns expand so that the text is above the map. 
+
+### Delivery & Returns Page
+
+![Delivery and Returns](/readme_data/site_pages/delivery_returns_resize.png)
+
+The Delivery and Returns Page inform the users on the terms and conditions for delivery as well as what to do if they wish to return any products. 
+
+### FAQ Page
+
+![FAQ](/readme_data/site_pages/faq_resize.png)
+
+The FAQ page has all frequently asked questions from opening hours to how to register on the site. 
+The questions are individually packaged into an accordion element from the Bootstrap framework. 
+
+### Shop
+
+![Shop](/readme_data/site_pages/shop_resize.png)
+
+The shop page is the main focus of the site. This is where users can view all the products and it contains important elements:
+
+- **Product Card** - Each product is displayed in its own product card. The card contains a product image, product name, manufacturer and price. At the bottom of the card there is a category link. When a user clicks on the category link the site will filter all products in that category and display on the shop page. 
+
+- **Category side menu** - On the left there is a category site menu. It is dynamically generated based on the categories of products available in the shop. When an admin adds a new category in the administrator panel, a new category will appear in the side menu. If a user clicks on any of the categories, the products will filter by that category and display on the page. 
+
+- **Product title** - Above the products there is a product count which informs the user how many products are in the category they are currently looking at. It also informs the user which category they have selected so that they can easily navigate through the shop. 
+
+- **Sorting dropdown** - Above the products on the right there is a sorting dropdown menu which sorts products by price, manufacturer and alphabetically. 
+
+- **Back to top button** - in the bottom right corner there is a "Back to top" button. If the user scrolls through the store they can press the button to get back to the top of the page. 
+
+### Products Detail
+
+![Products Detail](/readme_data/site_pages/product_details_resize.png)
+
+The product details page gives the user more information about a product. 
+On this page the user can see a larger image of the product. If they click on the image, a full size image will open in a new browser window. The user can see the product name, product manufacturer, product price, product description. 
+
+From this page, the user can add this product to their cart by selecting the quantity and pressing "Add to cart". If the user does not want to purchase the product, they can return to the shop by pressing "Keep Shopping". 
+
+### Product Success Message
+
+![Product Success Message](/readme_data/site_pages/success_message_resize.png)
+
+If a user decides to place an item into their cart, they will be presented with a message informing them that the product is now in their cart. 
+
+
 
 ## Existing Features
 ## Features Left to Implement
