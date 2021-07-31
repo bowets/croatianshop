@@ -230,8 +230,6 @@ The user is also informed that an order will be emailed to their email address i
 
 - **Stock model** - A model referencing the products and displaying the current stock of items. This was not implemented due to time constraints. 
 
-- **Custom 404 and 500 error pages** - This was not implemented due to time constraints. 
-
 
 # Information Architecture
 
@@ -380,8 +378,117 @@ To run the tests type `py manage.py test` in the command prompt.
 ## Manual Testing
 
 - Navigation Bar
-    - Corre
+    - Correct links are displayed `Categories`, `Shop`, `About Us`, `Deliveries & Returns`, `FAQ`, `My Account`, `Shopping Cart`
+    - All links resolve to the correct page 
+    - Navigation bar scales, is responsive and renders well on desktop and mobile
+    - Displays search bar, title 
 
+- Footer
+    - Renders correctly on page and is properly aligned
+    - On mobile, the footer realigns with each column expanding and stacking
+    - Links to social media accounts do not work as they are not assigned any links. This is expected as this is for display purposes only (this is an educational project)
+    - Links to other pages `About Us`, `Deliveries & Returns`, `FAQ` render properly
+
+- Home Page
+    - Renders when navigating to site
+    - Scales and is responsive on both desktop and mobile
+    - Carousel displays and correctly renders featured products
+    - When new items are marked as featured, they appear in the carousel
+
+- Search
+    - The search bar is visible from any page and allows user to search for products
+    - The search bar was tested for name of product, manufacturer, product description and filters products successfully
+    - If there are no search results, it displays the results correctly
+
+- Shop
+    - The shop correctly displays all products
+    - The category side menu correctly filters products by category
+    - The products counter correctly displays the number of products displayed
+    - The sorting dropdown correctly sorts products by price, manufacturer and alphabetically
+
+- Product Cards
+    - Product cards all render product images if the product has an image and if the product does not have an image the card displays a no-image placeholder
+    - On mobile, products display correctly and stack. All information is clearly visible and nothing is cut off
+
+- Success message
+    - Upon each addition to the cart, the success message correctly displays products in the cart
+    - On mobile, the success message is positioned to the right and displays fully on any resolution screen
+
+- Product Details Page
+    - Product image is displayed on both desktop and mobile
+    - Product title, product description, product manufacturer and price all display correctly
+        - On mobile, this information displays correctly below the product image
+    - Buttons are correctly styled and display on both desktop and mobile
+    - Buttons resolve to the correct links
+    - Add to cart places item in the cart
+
+- Checkout page
+    - Correctly displays all items selected by the user in a table
+    - On mobile the products stack and display correctly
+    - Users are able to change the quantity of the products or delete the product from the cart
+    - Clicking "Secure Checkout" takes the user to the purchase page
+    - Clicking "Keep shopping" takes the user back to the Shop
+    - Cost, delivery cost and grand total correctly calculate and update if users change the quantity or delete products from the cart
+
+- Purchase page
+    - Purchase page renders form on both desktop and mobile
+    - For logged in users, form correctly populates personal information
+
+- Stripe
+    - Stripe testing was done using card number "4242 4242 4242 4242"
+    - Card is accepted and clicking "Complete Order" brings up the overlay to allow the purchase to complete
+
+- Order Details Page
+    - Order details page displays correctly and shows all the order details as intended
+    - When the order is placed, the user is presented with the order details and a success message informing the user that their details have been emailed to their address
+
+- Emails
+    - Emails are successful and sent to the correct address
+    - There have been intermittent issues with emails arriving late. Some emails have taken over 24 hours to arrive, however, most testers did not experience this issue
+        - As this seems to be intermittent, it could be an issue with a service outside of this project
+
+- Registration
+    - Non registerd users are able to register and receive a verification email
+    - Clicking the verification email verifies the account and users can log in
+
+- Logged in user accounts
+    - Logged in users can view their account
+    - The form with the user details displays correctly and is populated with the users details
+    - Changing the details and clicking "Update Information" changes the user information and saves it to the form
+    - Users previous orders display correctly in the column on the right. 
+    - Clicking on a previous order opens it up correctly and the link to go back to the profile resolves back to the user profile
+
+- SuperUsers 
+    - Logged in supper users can see and additional option in the My Account dropdown to manage products
+    - The Manage products page opens up correctly and renders a form
+    - Completing the form successfully adds a product to the database
+    - If the featured checkbox is clicked, the product successfully displays in the carousel on the home page
+    - On the Shop page, superusers can see options to edit or delete products
+    - The delete button successfully deletes products
+    - The edit button successfully resolves to the edit item page and populates the form with the correct information
+    - Editing information in the form saves the new information to the database and is displayed on the site
+
+- 404 / 500 pages
+    - Entering a non-existent url triggers the 404 error and successfully displays the custom 404 page
+
+## Testing devices
+
+The site was tested on three mobile devices, one laptop and one desktop with two resolution monitors 
+- Samsung Galaxy S10e
+- OnePlus Nord
+- Samsung A10 tablet
+- Desktop at 1440p resolution
+- Desktop at 1080p resolution
+- Asus Zenbook Laptop
+
+All devices displayed the site correctly
+
+## Testing software
+
+This site was tested using Microsof Edge and Chrome browsers. 
+It was tested using full resolution as well as virtual device scaling using Microsoft Edge and Chrome dev tools
+
+All resolutions displayed the site correctly.
 # Deployment
 ## Local Deployment
 
