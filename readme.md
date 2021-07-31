@@ -209,20 +209,36 @@ If a user wishes to update the quantity, they can change the number in the numbe
 
 ### Purchase page
 
+![Purchase page](/readme_data/site_pages/purchase_page_zoom_out_resize.png)
 
+The purchase page is separated into two columns. The included photo is zoomed out to 70% and therefore looks different to the other screenshots in this readme. 
+The left column contains a form where the user will enter their shipping and billing information. 
+Below the form there is an option to register for an account to save information to their profile or login if they already have an account. 
+Below these links the user can either go back to the store to continue shopping or complete the purchase. 
 
+The right column contains the details of the order. 
 
+### Order Confirmation
 
-## Existing Features
+![Order Confirmation](/readme_data/site_pages/order_confirmation_resize.png)
+
+When a user completes the order, they will be presented with the order confirmation page. This page will show the user the products they ordered, the address where the order will be shipped and the total cost of the order. 
+
+The user is also informed that an order will be emailed to their email address in the success message in the top right. 
+
 ## Features Left to Implement
+
+- **Stock model** - A model referencing the products and displaying the current stock of items. This was not implemented due to time constraints. 
+
+- **Custom 404 and 500 error pages** - This was not implemented due to time constraints. 
+
+
 # Information Architecture
+
 ## Database Choice
+
+The database used in development is [SQLlite3](https://www.sqlite.org/index.html) as it comes with the dhango package. However, in production, the database was changed to [PostgreSQL](https://www.postgresql.org/)
 ## Data Modeling
-# Technologies Used
-## Languages
-## Libraries and Frameworks
-## Tools
-## Databases
 
 ### Products App
 
@@ -301,14 +317,120 @@ order|ForeignKey - "Order"|null=False, blank=False, on\_delete=models.CASCADE,
 product|ForeignKey - "Product"|null=False, blank=False, on\_delete=models.CASCADE
 quantity|IntegerField|null=False, blank=False, default=0
 lineitem\_total|DecimalField|max\_digits=6, decimal\_places=2, null=False, blank=False, editable=False
+# Technologies Used
+## Languages
 
+- [HTML](https://en.wikipedia.org/wiki/HTML)
+- [CSS](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://www.python.org/)
+- [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) - Used to display back-end data in HTML
+
+## Libraries and Frameworks
+
+- [Django](https://www.djangoproject.com/) - Python framework for building the project.
+- [jQuery](https://jquery.com/) - to simplify DOM manipulation and to initialize Bootstrap functions.
+- [Bootstrap](https://getbootstrap.com/) - as the front-end framework for layout and design.
+- [Google Fonts](https://fonts.google.com/) - Used to import fonts for the project
+- [Font Awesome](https://fontawesome.com/) - Used to add icons to buttons and as text supplements
+- [Gunicorn](https://pypi.org/project/gunicorn/) - a Python WSGI HTTP Server to enable deployment to Heroku.
+- [Psycopg2](https://pypi.org/project/psycopg2/) - to enable the PostgreSQL database to function with Django.
+- [Stripe](https://stripe.com/ie) - Service to handle payments in the app
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) - Used to style forms in the app
+
+## Tools
+
+- [VSCode](https://code.visualstudio.com/) - A cross platform code editor used to develop this project
+- [GitHub](https://github.com/) - A cloud based code repository used to store all code files for this project
+- [Heroku](https://heroku.com) - Used to host this application online
+- [PIP](https://pypi.org/project/pip/) - used to install the necessary dependencies for the project
+- [Balsamiq Wireframes](https://balsamiq.com/) - Used to make wireframes for the project
+- [Paint.net](https://www.getpaint.net/) - Used to resize images.
+- [AWS S3 Bucket](https://aws.amazon.com/) - used to store static and media files
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) - Adds compatibility with AWS S3
+- [Travis CI](https://travis-ci.com/) - Continuous integration service
+- [Coolors.co](https://coolors.co/) - Color picker service
+- [CleanPNG](https://www.cleanpng.com/png-croatia-vector-map-rijeka-2316421/download-png.html) - To download the favicon
+- [The Noun Project](https://thenounproject.com/term/croatia-map/350294/) To download a map of Croatia for the about page. 
+- [Microsoft Edge](https://www.microsoft.com/en-us/edge?r=1) - Web browser used for testing and page preview
+- [Google Chrome](https://www.google.com/intl/en_ie/chrome/) - Web browser user for testing
+- [Markdown Table Generator](https://www.tablesgenerator.com/markdown_tables) - Used to design the tables used in this readme file
+- [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/) - Used to create a virtual environment to install project dependencies
+
+## Databases
+
+- [SQLlite3](https://www.sqlite.org/index.html) - Database used in development
+- [PostgreSQL](https://www.postgresql.org/) - Database used in production
+
+## Testing
+
+- [W3C Markup Validation Service](https://validator.w3.org/) - Testing that all HTML code is valid
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Testing that all CSS code is valid
+- [JS Hint](https://jshint.com/) - Testing that all javascript code is valid
+- [PEP8 Online](http://pep8online.com/) - Testing that all python code is valid
 
 # Testing
 # Deployment
 ## Local Deployment
+
+To deploy this project locally please make sure you have the following installed:
+
+- An IDE of your choice. I used VSCode
+- Git
+- Pip
+- Python
+
+The steps to follow are:
+
+1. Download this git repository to your local machine. There are two ways to do this. Navigate to [Croatian Shop repo](https://github.com/bowets/croatianshop) and click on the green button. Download the ZIP file into a folder on your local machine and open with you IDE. 
+Alternatively, you could open command prompt and navigate to your development folder. In that folder initialize Git with `git init`. Then go back to the repository, click on the green button and copy the link to the repository. When you copy the link in command prompt type `git clone <link you copied>`. This will download the repository to your local folder. 
+
+2. Set the environmental variables
+- Create `.env` file in the projects root directory
+- Create `.gitignore` file and add `.env` to gitignore. 
+- Set your environmental variables in `.env` as follows:
+```
+import os
+
+os.environ.setdefault("SECRET_KEY", "< Your Secret Key >")
+os.environ.setdefault("STRIPE_PUBLIC_KEY", "< Your Stripe Public Key >")
+os.environ.setdefault("STRIPE_SECRET_KEY", "< Your Stripe Secret Key >")
+os.environ.setdefault('STRIPE_WH_SECRET', '< Your Stripe Web Handler Key >')
+os.environ.setdefault('DEVELOPMENT', 'True')
+```
+
+3. Install the project requirements `pip install -r requirements.txt`
+4. Perform migrations to initialize the database 
+- `py manage.py makemigrations`
+- `py manage.py migrate`
+5. If you would like to load the data into the database you can use the db.json fixture. Otherwise you can add your own data through the admin panel. 
+- To load the data using the fixture `py manage.py loaddata db.json`
+6. Create a superuser to access the admin panel
+- `py manage.py createsuperuser`
+- Follow the prompts to create a super user
+7. This should be all and you can start up the server
+- `py manage.py runserver`
+- Django will fire up the localhost server and you can see what the page looks like
+8. If you would like to access the admin panel to modify or add products add `/admin` to the base URL in the browser
+
 ## Heroku Deployment
+
+
+
 # Credits
 ## Code
+- The project's code was developed by following the Code Institute video lessons and based on the understanding of the Boutique Ado Django Mini-Project, but was customized, modified and enhanced to fit the project purposes.
+- The Django web documentation provided information on creating additional models
+- StackOverflow provided solutions to debugging URLs and view bugs
 ## Content and Media
+
+- [CleanPNG](https://www.cleanpng.com/png-croatia-vector-map-rijeka-2316421/download-png.html) - To download the favicon
+- [The Noun Project](https://thenounproject.com/term/croatia-map/350294/) To download a map of Croatia for the about page
+
 ## Acknowledgements
+
+The Code Institute staff and lecturers. 
+Special thanks to Guido Cecilio Garcia, my Code Institute mentor, for his guidance and advice whilst working on this project.
 # Disclaimer
+
+This application is developed for educational purposes only and not for commercial use. 
