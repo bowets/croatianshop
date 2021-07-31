@@ -197,7 +197,19 @@ From this page, the user can add this product to their cart by selecting the qua
 
 ![Product Success Message](/readme_data/site_pages/success_message_resize.png)
 
-If a user decides to place an item into their cart, they will be presented with a message informing them that the product is now in their cart. 
+If a user decides to place an item into their cart, they will be presented with a message informing them that the product is now in their cart. From here the user can close the message and keep shopping or click "Go to Secure Checkout" and complete the order. 
+
+### Checkout Page
+
+![Checkout Page](/readme_data/site_pages/checkout_page_resize.png)
+
+If a user decides to see what is in their cart, they will be taken to the checkout page. Here they will see a list of all the products in their cart, the quantity of products they selected, the individual product price and subtotal if they will buy additional quantities. 
+
+If a user wishes to update the quantity, they can change the number in the number field and press "Update" This will update the quantity and recalculate the subtotal, grand total and delivery cost if the total is over €50. 
+
+### Purchase page
+
+
 
 
 
