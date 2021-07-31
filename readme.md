@@ -379,7 +379,8 @@ To run the tests type `py manage.py test` in the command prompt.
 
 ## Manual Testing
 
-
+- Navigation Bar
+    - Corre
 
 # Deployment
 ## Local Deployment
