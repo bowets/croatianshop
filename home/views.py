@@ -28,3 +28,11 @@ def delivery_return(request):
 def faq(request):
     """Renders the FAQ page"""
     return render(request, 'home/faq.html')
+
+
+def error_404(request, exception):
+    return render(request, 'home/404.html')
+
+
+def error_500(request):
+    return render(request, 'home/500.html')

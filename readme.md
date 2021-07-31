@@ -394,8 +394,7 @@ To deploy this project locally please make sure you have the following installed
 
 The steps to follow are:
 
-1. Download this git repository to your local machine. There are two ways to do this. Navigate to [Croatian Shop repo](https://github.com/bowets/croatianshop) and click on the green button. Download the ZIP file into a folder on your local machine and open with you IDE. 
-Alternatively, you could open command prompt and navigate to your development folder. In that folder initialize Git with `git init`. Then go back to the repository, click on the green button and copy the link to the repository. When you copy the link in command prompt type `git clone <link you copied>`. This will download the repository to your local folder. 
+1. Go to the [Croatian Shop repo](https://github.com/bowets/croatianshop). Copy the link to the repository by clicking the green button. When you copy the link, open command prompt and navigate to the folder where you would like to download the project and type `git clone <link you copied>`. This will download the repository to your local folder. 
 
 2. Set the environmental variables
 - Create `.env` file in the projects root directory
