@@ -109,16 +109,16 @@ The color palette was taken from the website [Coolors.co](https://coolors.co/). 
 ## Tools
 ## Databases
 
-### Products
+### Products App
 
-#### Categories
+#### Categories Model
 
 **Database Key**|**Field Type**|**Validation**
 :-----:|:-----:|:-----:
 name|CharField|max\_length=254, null=False, blank=False
 friendly\_name|CharField|max\_length=254, null=True, blank=True
 
-#### Order
+#### Product Model
 
 **Database Key**|**Field Type**|**Validation**
 :-----:|:-----:|:-----:
@@ -131,6 +131,62 @@ price|DecimalField|max\_digits=6, decimal\_places=2, null=False, blank=False
 image\_url|URLField|max\_length=1024, null=True, blank=True
 image|ImageField|null=True, blank=True
 featured|BooleanField|default=False
+
+#### Manufacturer Model
+
+**Database Key**|**Field Type**|**Validation**
+:-----:|:-----:|:-----:
+name|CharField|max\_length=254
+friendly\_name|CharField|max\_length=254, null=True, blank=True
+
+### Profile App
+
+#### UserProfile Model
+
+**Database Key**|**Field Type**|**Validation**
+:-----:|:-----:|:-----:
+user|OneToOneField - "User"|on\_delete=models.CASCADE
+default\_phone\_number|CharField|max\_length=20, null=True, blank=True
+default\_street\_address1|CharField|max\_length=100, null=True, blank=True
+default\_street\_address2|CharField|max\_length=100, null=True, blank=True
+default\_town\_or\_city|CharField|max\_length=40, null=True, blank=True
+default\_eircode|CharField|max\_length=10, null=True, blank=True
+default\_county|CharField|max\_length=100, null=True, blank=True
+default\_country|CountryField|blank\_label="Country", null=True, blank=True
+
+### Purchase App
+
+#### Order Model
+
+**Database Key**|**Field Type**|**Validation**
+:-----:|:-----:|:-----:
+order\_number|CharField|max\_length=32, null=False, editable=False
+user\_profile|ForeignKey - "UserProfile"|on\_delete=models.SET\_NULL, null=True, blank=True, related\_name='orders'
+full\_name|CharField|max\_length=50, null=False, blank=False
+email|EmailField|max\_length=254, null=False, blank=False
+phone\_number|CharField|max\_length=20, null=False, blank=False
+country|CountryField|blank\_label="Country *", null=False, blank=False
+eircode|CharField|max\_length=10, null=False, blank=False
+town\_or\_city|CharField|max\_length=40, null=False, blank=False
+street\_address1|CharField|max\_length=100, null=False, blank=False
+street\_address2|CharField|max\_length=100, null=True, blank=True
+county|CharField|max\_length=100, null=False, blank=False
+date|DateTimefield|auto\_now\_add=True
+delivery\_cost|DecimalField|max\_digits=10, decimal\_places=2, null=False, default=0
+order\_total|DecimalField|max\_digits=10, decimal\_places=2, null=False, default=0
+grand\_total|DecimalField|max\_digits=10, decimal\_places=2, null=False, default=0
+original\_cart|TextField|null=False, blank=False, default="none"
+stripe\_pid|Charfield|max\_length=254, null=False, blank=False, default="none"
+
+#### OrderLineItem Model
+
+**Database Key**|**Field Type**|**Validation**
+:-----:|:-----:|:-----:
+order|ForeignKey - "Order"|null=False, blank=False, on\_delete=models.CASCADE, related\_name='lineitems'
+product|ForeignKey - "Product"|null=False, blank=False, on\_delete=models.CASCADE
+quantity|IntegerField|null=False, blank=False, default=0
+lineitem\_total|DecimalField|max\_digits=6, decimal\_places=2, null=False, blank=False, editable=False
+
 
 # Testing
 # Deployment
