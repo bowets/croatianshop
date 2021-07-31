@@ -10,5 +10,3 @@ class TestURLs(TestCase):
     def test_shop_url_is_resolved(self):
         url = reverse('shop')
         self.assertEquals(resolve(url).func, all_products)
-
-

@@ -35,7 +35,7 @@ class TestCheckoutOrderLineItem(TestCase):
         product = Product(price=66.00, featured=False)
         product.save()
         orderLineItem = OrderLineItem(product=product,
-                                      quantity=1, 
+                                      quantity=1,
                                       order=order_number,
                                       lineitem_total=66.00)
 

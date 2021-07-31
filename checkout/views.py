@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.urls import reverse
 from products.models import Product
 
+
 def view_cart(request):
     """Renders the about page"""
 
@@ -22,15 +23,15 @@ def add_to_cart(request, item_id):
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
-        messages.success(request, f'Updated the quantity for {product.name} to {cart[item_id]}')
+        messages.success(request, f'Updated the quantity for \
+                        {product.name} to {cart[item_id]}')
     else:
         cart[item_id] = quantity
-        messages.success(request, f'Added {cart[item_id]} {product.name} to your bag')
-
+        messages.success(request, f'Added {cart[item_id]} \
+                                 {product.name} to your bag')
 
     request.session['cart'] = cart
     return redirect(redirect_url)
-
 
 
 def update_cart(request, item_id):
@@ -41,11 +42,11 @@ def update_cart(request, item_id):
 
     if quantity > 0:
         cart[item_id] = quantity
-        messages.success(request, f'Updated the quantity for {product.name} to {cart[item_id]}')
+        messages.success(request, f'Updated the quantity for \
+                                {product.name} to {cart[item_id]}')
     else:
         cart.pop(item_id)
         messages.success(request, f'Removed {product.name}')
-
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))

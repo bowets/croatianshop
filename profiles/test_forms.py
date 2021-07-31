@@ -2,8 +2,6 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from .forms import UserProfileForm
 
-# Create your tests here.
-
 
 class TestProfileForms(TestCase):
 

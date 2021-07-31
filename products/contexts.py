@@ -1,5 +1,6 @@
 from .models import Category
 
+
 def category_list(request):
     categories = Category.objects.all().order_by('name')
 
@@ -8,4 +9,5 @@ def category_list(request):
     }
 
     return context
+
 

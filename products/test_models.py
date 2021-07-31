@@ -10,11 +10,10 @@ class TestProductModel(TestCase):
                                          price=255.99)
         self.assertEqual(str(product), product.name)
 
-
     def test_category_name_created_successfully(self):
         category = Category.objects.create(
-            name = 'frozen',
-            friendly_name = 'Frozen',
+            name='frozen',
+            friendly_name='Frozen',
         )
         self.assertTrue(category.friendly_name)
         self.assertTrue(category.name)

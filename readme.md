@@ -98,6 +98,55 @@ The color palette was taken from the website [Coolors.co](https://coolors.co/). 
 
 **Note:** The wireframes are a basic representation of the actual look of the site. 
 # Features
+
+This section will go through all the features implemented in the Croatian Food Store
+## Apps Used
+This section will go through all the apps created in the project and their function
+
+### Checkout App
+
+The checkout app functions as a place where users can get an overview of the products they have selected for purchase. It displays this information and gives users the option to either update the quantity of the items they purchased or to delete them all together. 
+
+### Home App
+
+This app displays the **home**, **about**, **delivery & returns** and **FAQ** pages.
+
+### Products App
+
+The products app holds all the information about the products offered on the site. It holds the product models and allows administrators to edit / add / delete products.
+
+### Profiles App
+
+The profiles app stores information about the registered users on the site. 
+
+### Purchase
+
+The purchase app takes care of working with orders and payments. 
+
+## Site Pages
+
+### Features present throughout the site
+
+The following features are added to the base template so they are included in all pages throughout the site
+
+- **Navigation bar** - The navigation bar contains links for the user to navigate around the site. It links to the shop where users can find all the products available for purchase. There is a dropdown link for product categories. This categories list is dynamically generated from the categories model. The user can also navigate to the About Us, Delivery & Returns and FAQ pages. These are static pages which will be explained further in the readme. 
+
+- **Search Bar** - Users can search for products from anywhere on the site. The search looks for key words in the product name, product description and manufacturer name. 
+Users can therefore search by name, description and manufacturer. 
+
+- **My Account link** - The my account link changes dynamically based on the logged in status of the user. Non logged in users will be presented with the option to register for an account or to log in with their credentials. 
+
+- **Shopping Cart link** - The shopping cart link is present on all pages as a convenient way for the user to always know the value of the items they have selected for purchase and as a quick way to purchase products. 
+
+- **Site title** - Users can see the site title on all pages and by clicking the title can go back to the home page. The home page is not the main focus of the site and therefore no need to create a special link for it.
+
+- **Site footer** - The site footer is available throughout the site and it clearly displays the shop address, social media links (social media links do not work as this site is for educational purposes only) and links to the static pages. 
+## Home Page
+
+![Home Page](/readme_data/site_pages/home_resize.png)
+
+The home page has a page title
+
 ## Existing Features
 ## Features Left to Implement
 # Information Architecture

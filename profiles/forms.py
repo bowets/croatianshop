@@ -7,13 +7,15 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         exclude = ('user',)
 
-
     def __init__(self, *args, **kwargs):
-        """Add placeholders and classes, remove auto generated labels and set autofocus on first field"""
+        """
+        Add placeholders and classes, remove auto
+        generated labels and set autofocus on first field
+        """
 
         super().__init__(*args, **kwargs)
         placeholders = {
-            'default_phone_number': 'Phone Number', 
+            'default_phone_number': 'Phone Number',
             'default_eircode': 'Eircode',
             'default_town_or_city': 'Town or City',
             'default_street_address1': 'Street Address 1',
@@ -26,7 +28,7 @@ class UserProfileForm(forms.ModelForm):
             if field != 'default_country':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
-                else: 
+                else:
                     placeholder = placeholders[field]
 
                 self.fields[field].widget.attrs['placeholder'] = placeholder

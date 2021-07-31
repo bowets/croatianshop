@@ -16,6 +16,7 @@ from profiles.forms import UserProfileForm
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -63,28 +64,31 @@ def purchase(request):
                 try:
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
-                        order = order,
-                        product = product,
-                        quantity = item_data,
+                        order=order,
+                        product=product,
+                        quantity=item_data,
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database."
+                        "One of the products in your bag wasn't \
+                         found in our database."
                         "Please call us for assistance!"
                     ))
                     order.delete()
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('purchase_success', args=[order.order_number]))
+            return redirect(reverse('purchase_success',
+                            args=[order.order_number]))
         else:
             messages.error(request, "There was an error with your form. \
                 Please double check your information.")
     else:
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There is nothing in your cart at the moment")
+            messages.error(request,
+                           "There is nothing in your cart at the moment")
             return redirect(reverse('shop'))
 
         current_cart = cart_contents(request)
@@ -93,10 +97,9 @@ def purchase(request):
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
-            currency = settings.STRIPE_CURRENCY
+            currency=settings.STRIPE_CURRENCY
         )
 
-        
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -129,14 +132,13 @@ def purchase(request):
 
     return render(request, template, context)
 
-        
+
 def purchase_success(request, order_number):
     """If checkout successful inform user their purchase was successfull"""
 
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    
-    
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
@@ -164,7 +166,6 @@ def purchase_success(request, order_number):
 
     if 'cart' in request.session:
         del request.session['cart']
-
 
     template = 'purchase/purchase_success.html'
 
